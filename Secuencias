@@ -1,0 +1,14 @@
+-- 1. Secuencia para Socios
+CREATE SEQUENCE seq_socios START WITH 1 INCREMENT BY 1;
+
+-- 2. Secuencia para UsuariosSistema
+CREATE SEQUENCE seq_usuarios START WITH 1 INCREMENT BY 1;
+
+-- 3. Secuencia para Membresias
+CREATE SEQUENCE seq_membresias START WITH 1 INCREMENT BY 1;
+
+-- 4. Secuencia para Pagos
+CREATE SEQUENCE seq_pagos START WITH 1 INCREMENT BY 1;
+
+-- 5. Secuencia para Eventos
+CREATE SEQUENCE seq_eventos START WITH 1 INCREMENT BY 1;
