@@ -1,0 +1,52 @@
+-- Persona 1: Vista de socios con datos básicos
+CREATE OR REPLACE VIEW vw_socios_basicos AS
+SELECT socio_id, cedula, nombre, apellido, telefono, email
+FROM Socios;
+
+-- Consulta
+SELECT * FROM vw_socios_basicos;
+
+
+-- Persona 2: Vista de usuarios del sistema con su rol y estado
+CREATE OR REPLACE VIEW vw_usuarios_roles AS
+SELECT usuario_id, nombre_usuario, rol_usuario, estado_usuario, socio_id
+FROM UsuariosSistema;
+
+-- Consulta
+SELECT nombre_usuario, rol_usuario 
+FROM vw_usuarios_roles
+WHERE estado_usuario = 'activo';
+
+
+-- Persona 3: Vista de pagos con detalle
+CREATE OR REPLACE VIEW vw_pagos_detalle AS
+SELECT pago_id, socio_id, fecha_pago, monto_pago, metodo_pago, estado_pago
+FROM Pagos;
+
+-- Consulta
+SELECT socio_id, monto_pago, estado_pago
+FROM vw_pagos_detalle
+WHERE estado_pago = 'pendiente';
+
+
+-- Persona 4: Vista de inscripciones con estado
+CREATE OR REPLACE VIEW vw_inscripciones_eventos AS
+SELECT inscripcion_id, socio_id, evento_id, fecha_inscripcion, estado_inscripcion
+FROM Inscripciones;
+
+-- Consulta
+SELECT evento_id, COUNT(*) AS total_inscritos
+FROM vw_inscripciones_eventos
+WHERE estado_inscripcion = 'confirmado'
+GROUP BY evento_id;
+
+
+-- Persona 5: Vista de reservas de instalaciones
+CREATE OR REPLACE VIEW vw_reservas_instalaciones AS
+SELECT reserva_id, socio_id, instalacion_id, fecha_reserva, hora_inicio, hora_fin, estado_reserva
+FROM Reservas;
+
+-- Consulta
+SELECT socio_id, fecha_reserva, estado_reserva
+FROM vw_reservas_instalaciones
+WHERE estado_reserva = 'pendiente';
