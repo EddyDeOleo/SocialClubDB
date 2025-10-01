@@ -1,0 +1,379 @@
+
+-- Persona 1
+
+-- Socios
+INSERT INTO Socios (socio_id, cedula, nombre, apellido, fecha_nacimiento, direccion, telefono, email, preferencias, configuracion_privacidad)
+VALUES (seq_socios.NEXTVAL,'001-0000001-1','Juan','Pérez',DATE '1990-05-12','Calle 1','8091111111','juanp@mail.com','Prefiere yoga','publico');
+
+INSERT INTO Socios (socio_id, cedula, nombre, apellido, fecha_nacimiento, direccion, telefono, email, preferencias, configuracion_privacidad)
+VALUES (seq_socios.NEXTVAL,'001-0000002-2','Ana','Gómez',DATE '1985-08-20','Calle 2','8092222222','anag@mail.com','Prefiere cardio','privado');
+
+INSERT INTO Socios (socio_id, cedula, nombre, apellido, fecha_nacimiento, direccion, telefono, email, preferencias, configuracion_privacidad)
+VALUES (seq_socios.NEXTVAL,'001-0000003-3','Luis','Ramírez',DATE '1992-11-03','Calle 3','8093333333','luisr@mail.com','Prefiere pesas','publico');
+
+INSERT INTO Socios (socio_id, cedula, nombre, apellido, fecha_nacimiento, direccion, telefono, email, preferencias, configuracion_privacidad)
+VALUES (seq_socios.NEXTVAL,'001-0000004-4','María','López',DATE '1988-01-15','Calle 4','8094444444','marial@mail.com','Prefiere natación','privado');
+
+INSERT INTO Socios (socio_id, cedula, nombre, apellido, fecha_nacimiento, direccion, telefono, email, preferencias, configuracion_privacidad)
+VALUES (seq_socios.NEXTVAL,'001-0000005-5','Carlos','Díaz',DATE '1995-07-30','Calle 5','8095555555','carlosd@mail.com','Prefiere crossfit','publico');
+
+-- CategoriasMembresia
+INSERT INTO CategoriasMembresia (categoria_id, nombre_categoria, descripcion, lista_privilegios, lista_beneficios)
+VALUES (seq_categorias.NEXTVAL,'Básica','Acceso a gimnasio y clases básicas','Gimnasio,Clases','Descuento en tienda');
+
+INSERT INTO CategoriasMembresia (categoria_id, nombre_categoria, descripcion, lista_privilegios, lista_beneficios)
+VALUES (seq_categorias.NEXTVAL,'Premium','Acceso a todas las instalaciones y clases','Gimnasio,Clases,SPA','Descuentos y regalos');
+
+INSERT INTO CategoriasMembresia (categoria_id, nombre_categoria, descripcion, lista_privilegios, lista_beneficios)
+VALUES (seq_categorias.NEXTVAL,'VIP','Acceso total y prioridad en reservas','Todo,Prioridad','Beneficios exclusivos');
+
+INSERT INTO CategoriasMembresia (categoria_id, nombre_categoria, descripcion, lista_privilegios, lista_beneficios)
+VALUES (seq_categorias.NEXTVAL,'Estudiante','Acceso limitado para estudiantes','Gimnasio,Clases limitadas','Descuento 50%');
+
+INSERT INTO CategoriasMembresia (categoria_id, nombre_categoria, descripcion, lista_privilegios, lista_beneficios)
+VALUES (seq_categorias.NEXTVAL,'Senior','Para mayores de 60 años','Gimnasio,Clases adaptadas','Descuentos y eventos especiales');
+
+-- Persona 2
+
+-- UsuariosSistema
+INSERT INTO UsuariosSistema (usuario_id, nombre_usuario, hash_password, rol_usuario, estado_usuario, socio_id)
+VALUES (seq_usuarios.NEXTVAL,'juanperez','HASH1','socio','activo',1);
+
+INSERT INTO UsuariosSistema (usuario_id, nombre_usuario, hash_password, rol_usuario, estado_usuario, socio_id)
+VALUES (seq_usuarios.NEXTVAL,'anagomez','HASH2','socio','activo',2);
+
+INSERT INTO UsuariosSistema (usuario_id, nombre_usuario, hash_password, rol_usuario, estado_usuario, socio_id)
+VALUES (seq_usuarios.NEXTVAL,'luisramirez','HASH3','socio','activo',3);
+
+INSERT INTO UsuariosSistema (usuario_id, nombre_usuario, hash_password, rol_usuario, estado_usuario, socio_id)
+VALUES (seq_usuarios.NEXTVAL,'marialopez','HASH4','socio','activo',4);
+
+INSERT INTO UsuariosSistema (usuario_id, nombre_usuario, hash_password, rol_usuario, estado_usuario, socio_id)
+VALUES (seq_usuarios.NEXTVAL,'admin','HASH5','administrador','activo',NULL);
+
+-- Membresias
+INSERT INTO Membresias (membresia_id, socio_id, categoria_id, fecha_inicio, fecha_fin, estado_membresia, tarifa)
+VALUES (seq_membresias.NEXTVAL,1,1,DATE '2025-01-01',DATE '2025-12-31','activa',500.00);
+
+INSERT INTO Membresias (membresia_id, socio_id, categoria_id, fecha_inicio, fecha_fin, estado_membresia, tarifa)
+VALUES (seq_membresias.NEXTVAL,2,2,DATE '2025-02-01',DATE '2025-12-31','activa',1000.00);
+
+INSERT INTO Membresias (membresia_id, socio_id, categoria_id, fecha_inicio, fecha_fin, estado_membresia, tarifa)
+VALUES (seq_membresias.NEXTVAL,3,1,DATE '2025-03-01',DATE '2025-12-31','activa',500.00);
+
+INSERT INTO Membresias (membresia_id, socio_id, categoria_id, fecha_inicio, fecha_fin, estado_membresia, tarifa)
+VALUES (seq_membresias.NEXTVAL,4,3,DATE '2025-04-01',DATE '2025-12-31','activa',1500.00);
+
+INSERT INTO Membresias (membresia_id, socio_id, categoria_id, fecha_inicio, fecha_fin, estado_membresia, tarifa)
+VALUES (seq_membresias.NEXTVAL,5,4,DATE '2025-05-01',DATE '2025-12-31','activa',300.00);
+
+-- Persona 3
+
+-- Pagos
+INSERT INTO Pagos (pago_id, socio_id, fecha_pago, monto_pago, metodo_pago, estado_pago)
+VALUES (seq_pagos.NEXTVAL,1,SYSDATE,500.00,'Tarjeta','completado');
+
+INSERT INTO Pagos (pago_id, socio_id, fecha_pago, monto_pago, metodo_pago, estado_pago)
+VALUES (seq_pagos.NEXTVAL,2,SYSDATE,1000.00,'Transferencia','pendiente');
+
+INSERT INTO Pagos (pago_id, socio_id, fecha_pago, monto_pago, metodo_pago, estado_pago)
+VALUES (seq_pagos.NEXTVAL,3,SYSDATE,500.00,'Efectivo','completado');
+
+INSERT INTO Pagos (pago_id, socio_id, fecha_pago, monto_pago, metodo_pago, estado_pago)
+VALUES (seq_pagos.NEXTVAL,4,SYSDATE,1500.00,'Tarjeta','completado');
+
+INSERT INTO Pagos (pago_id, socio_id, fecha_pago, monto_pago, metodo_pago, estado_pago)
+VALUES (seq_pagos.NEXTVAL,5,SYSDATE,300.00,'Transferencia','pendiente');
+
+-- Facturas
+INSERT INTO Facturas (factura_id, pago_id, fecha_factura, monto_factura, estado_factura, pasarela_pago)
+VALUES (seq_facturas.NEXTVAL,1,SYSDATE,500.00,'emitida','PayPal');
+
+INSERT INTO Facturas (factura_id, pago_id, fecha_factura, monto_factura, estado_factura, pasarela_pago)
+VALUES (seq_facturas.NEXTVAL,2,SYSDATE,1000.00,'emitida','Stripe');
+
+INSERT INTO Facturas (factura_id, pago_id, fecha_factura, monto_factura, estado_factura, pasarela_pago)
+VALUES (seq_facturas.NEXTVAL,3,SYSDATE,500.00,'emitida','MercadoPago');
+
+INSERT INTO Facturas (factura_id, pago_id, fecha_factura, monto_factura, estado_factura, pasarela_pago)
+VALUES (seq_facturas.NEXTVAL,4,SYSDATE,1500.00,'emitida','PayPal');
+
+INSERT INTO Facturas (factura_id, pago_id, fecha_factura, monto_factura, estado_factura, pasarela_pago)
+VALUES (seq_facturas.NEXTVAL,5,SYSDATE,300.00,'emitida','Stripe');
+
+-- ProgramaFidelizacion
+INSERT INTO ProgramaFidelizacion (programa_id, socio_id, fecha_registro, puntos_acumulados, recompensa_programa, descripcion_programa)
+VALUES (seq_programa.NEXTVAL,1,SYSTIMESTAMP,100,'Descuento 10%','Programa de fidelidad básico');
+
+INSERT INTO ProgramaFidelizacion (programa_id, socio_id, fecha_registro, puntos_acumulados, recompensa_programa, descripcion_programa)
+VALUES (seq_programa.NEXTVAL,2,SYSTIMESTAMP,200,'Descuento 15%','Programa de fidelidad premium');
+
+INSERT INTO ProgramaFidelizacion (programa_id, socio_id, fecha_registro, puntos_acumulados, recompensa_programa, descripcion_programa)
+VALUES (seq_programa.NEXTVAL,3,SYSTIMESTAMP,50,'Descuento 5%','Programa de fidelidad básico');
+
+INSERT INTO ProgramaFidelizacion (programa_id, socio_id, fecha_registro, puntos_acumulados, recompensa_programa, descripcion_programa)
+VALUES (seq_programa.NEXTVAL,4,SYSTIMESTAMP,300,'Descuento 20%','Programa de fidelidad VIP');
+
+INSERT INTO ProgramaFidelizacion (programa_id, socio_id, fecha_registro, puntos_acumulados, recompensa_programa, descripcion_programa)
+VALUES (seq_programa.NEXTVAL,5,SYSTIMESTAMP,30,'Descuento 5%','Programa de fidelidad básico');
+
+-- Persona 4
+
+-- Eventos
+INSERT INTO Eventos (evento_id, nombre_evento, tipo_evento, fecha_evento, lugar_evento, costo_evento, descripcion_evento)
+VALUES (seq_eventos.NEXTVAL,'Torneo de Tenis','deportivo',SYSTIMESTAMP,'Club Central',100.00,'Competencia anual de tenis');
+
+INSERT INTO Eventos (evento_id, nombre_evento, tipo_evento, fecha_evento, lugar_evento, costo_evento, descripcion_evento)
+VALUES (seq_eventos.NEXTVAL,'Fiesta Anual','social',SYSTIMESTAMP,'Salón Principal',50.00,'Fiesta de fin de año');
+
+INSERT INTO Eventos (evento_id, nombre_evento, tipo_evento, fecha_evento, lugar_evento, costo_evento, descripcion_evento)
+VALUES (seq_eventos.NEXTVAL,'Taller de Yoga','cultural',SYSTIMESTAMP,'Gimnasio',20.00,'Taller de meditación y yoga');
+
+INSERT INTO Eventos (evento_id, nombre_evento, tipo_evento, fecha_evento, lugar_evento, costo_evento, descripcion_evento)
+VALUES (seq_eventos.NEXTVAL,'Maratón 5K','deportivo',SYSTIMESTAMP,'Parque Central',10.00,'Carrera saludable para socios');
+
+INSERT INTO Eventos (evento_id, nombre_evento, tipo_evento, fecha_evento, lugar_evento, costo_evento, descripcion_evento)
+VALUES (seq_eventos.NEXTVAL,'Jornada Comunitaria','comunitario',SYSTIMESTAMP,'Plaza Pública',0.00,'Actividad de voluntariado local');
+
+-- Inscripciones
+INSERT INTO Inscripciones (inscripcion_id, evento_id, socio_id, fecha_inscripcion, estado_inscripcion, pago_id)
+VALUES (seq_inscripciones.NEXTVAL,1,1,SYSTIMESTAMP,'confirmado',1);
+
+INSERT INTO Inscripciones (inscripcion_id, evento_id, socio_id, fecha_inscripcion, estado_inscripcion, pago_id)
+VALUES (seq_inscripciones.NEXTVAL,2,2,SYSTIMESTAMP,'pendiente',2);
+
+INSERT INTO Inscripciones (inscripcion_id, evento_id, socio_id, fecha_inscripcion, estado_inscripcion, pago_id)
+VALUES (seq_inscripciones.NEXTVAL,3,3,SYSTIMESTAMP,'confirmado',3);
+
+INSERT INTO Inscripciones (inscripcion_id, evento_id, socio_id, fecha_inscripcion, estado_inscripcion, pago_id)
+VALUES (seq_inscripciones.NEXTVAL,4,4,SYSTIMESTAMP,'confirmado',4);
+
+INSERT INTO Inscripciones (inscripcion_id, evento_id, socio_id, fecha_inscripcion, estado_inscripcion, pago_id)
+VALUES (seq_inscripciones.NEXTVAL,5,5,SYSTIMESTAMP,'pendiente',5);
+
+-- EncuestasSatisfaccion
+INSERT INTO EncuestasSatisfaccion (encuesta_id, evento_id, socio_id, calificacion, comentarios_encuesta)
+VALUES (seq_encuestas.NEXTVAL,1,1,5,'Excelente evento');
+
+INSERT INTO EncuestasSatisfaccion (encuesta_id, evento_id, socio_id, calificacion, comentarios_encuesta)
+VALUES (seq_encuestas.NEXTVAL,2,2,4,'Buena organización');
+
+INSERT INTO EncuestasSatisfaccion (encuesta_id, evento_id, socio_id, calificacion, comentarios_encuesta)
+VALUES (seq_encuestas.NEXTVAL,3,3,5,'Muy recomendable');
+
+INSERT INTO EncuestasSatisfaccion (encuesta_id, evento_id, socio_id, calificacion, comentarios_encuesta)
+VALUES (seq_encuestas.NEXTVAL,4,4,3,'Podría mejorar');
+
+INSERT INTO EncuestasSatisfaccion (encuesta_id, evento_id, socio_id, calificacion, comentarios_encuesta)
+VALUES (seq_encuestas.NEXTVAL,5,5,4,'Buen ambiente');
+
+-- Mensajes
+INSERT INTO Mensajes (mensaje_id, remitente_id, destinatario_id, fecha_envio, contenido_mensaje, tipo_mensaje)
+VALUES (seq_mensajes.NEXTVAL,1,2,SYSTIMESTAMP,'Hola Ana, ¿vas al evento?','directo');
+
+INSERT INTO Mensajes (mensaje_id, remitente_id, destinatario_id, fecha_envio, contenido_mensaje, tipo_mensaje)
+VALUES (seq_mensajes.NEXTVAL,2,1,SYSTIMESTAMP,'Sí, allí estaré','directo');
+
+INSERT INTO Mensajes (mensaje_id, remitente_id, destinatario_id, fecha_envio, contenido_mensaje, tipo_mensaje)
+VALUES (seq_mensajes.NEXTVAL,3,4,SYSTIMESTAMP,'No olvides tu inscripción','directo');
+
+INSERT INTO Mensajes (mensaje_id, remitente_id, destinatario_id, fecha_envio, contenido_mensaje, tipo_mensaje)
+VALUES (seq_mensajes.NEXTVAL,4,5,SYSTIMESTAMP,'Evento cancelado','anuncio');
+
+INSERT INTO Mensajes (mensaje_id, remitente_id, destinatario_id, fecha_envio, contenido_mensaje, tipo_mensaje)
+VALUES (seq_mensajes.NEXTVAL,5,3,SYSTIMESTAMP,'Recordatorio de pago','directo');
+
+-- Anuncios
+INSERT INTO Anuncios (anuncio_id, socio_id, titulo_anuncio, contenido_anuncio, fecha_publicacion, tipo_anuncio)
+VALUES (seq_anuncios.NEXTVAL,1,'Nueva Clase de Yoga','Inscríbete en la nueva clase','SYSTIMESTAMP','evento');
+
+INSERT INTO Anuncios (anuncio_id, socio_id, titulo_anuncio, contenido_anuncio, fecha_publicacion, tipo_anuncio)
+VALUES (seq_anuncios.NEXTVAL,2,'Ganador Torneo Tenis','Felicitaciones al campeón','SYSTIMESTAMP','logro');
+
+INSERT INTO Anuncios (anuncio_id, socio_id, titulo_anuncio, contenido_anuncio, fecha_publicacion, tipo_anuncio)
+VALUES (seq_anuncios.NEXTVAL,3,'Fiesta Anual','No te pierdas la fiesta','SYSTIMESTAMP','noticia');
+
+INSERT INTO Anuncios (anuncio_id, socio_id, titulo_anuncio, contenido_anuncio, fecha_publicacion, tipo_anuncio)
+VALUES (seq_anuncios.NEXTVAL,4,'Maratón 5K','Participa en la carrera','SYSTIMESTAMP','evento');
+
+INSERT INTO Anuncios (anuncio_id, socio_id, titulo_anuncio, contenido_anuncio, fecha_publicacion, tipo_anuncio)
+VALUES (seq_anuncios.NEXTVAL,5,'Jornada Comunitaria','Ayuda a tu comunidad','SYSTIMESTAMP','evento');
+
+-- Foros
+INSERT INTO Foros (foro_id, tema_foro, fecha_creacion)
+VALUES (seq_foros.NEXTVAL,'Deportes',SYSTIMESTAMP);
+
+INSERT INTO Foros (foro_id, tema_foro, fecha_creacion)
+VALUES (seq_foros.NEXTVAL,'Nutrición',SYSTIMESTAMP);
+
+INSERT INTO Foros (foro_id, tema_foro, fecha_creacion)
+VALUES (seq_foros.NEXTVAL,'Eventos',SYSTIMESTAMP);
+
+INSERT INTO Foros (foro_id, tema_foro, fecha_creacion)
+VALUES (seq_foros.NEXTVAL,'Clases de Yoga',SYSTIMESTAMP);
+
+INSERT INTO Foros (foro_id, tema_foro, fecha_creacion)
+VALUES (seq_foros.NEXTVAL,'Reservas de Instalaciones',SYSTIMESTAMP);
+
+-- ComentariosForo
+INSERT INTO ComentariosForo (comentario_id, foro_id, socio_id, contenido_comentario, fecha_comentario)
+VALUES (seq_comentarios.NEXTVAL,1,1,'Excelente discusión',SYSTIMESTAMP);
+
+INSERT INTO ComentariosForo (comentario_id, foro_id, socio_id, contenido_comentario, fecha_comentario)
+VALUES (seq_comentarios.NEXTVAL,2,2,'Muy informativo',SYSTIMESTAMP);
+
+INSERT INTO ComentariosForo (comentario_id, foro_id, socio_id, contenido_comentario, fecha_comentario)
+VALUES (seq_comentarios.NEXTVAL,3,3,'Gracias por compartir',SYSTIMESTAMP);
+
+INSERT INTO ComentariosForo (comentario_id, foro_id, socio_id, contenido_comentario, fecha_comentario)
+VALUES (seq_comentarios.NEXTVAL,4,4,'Aprendí mucho',SYSTIMESTAMP);
+
+INSERT INTO ComentariosForo (comentario_id, foro_id, socio_id, contenido_comentario, fecha_comentario)
+VALUES (seq_comentarios.NEXTVAL,5,5,'Muy útil',SYSTIMESTAMP);
+
+-- Persona 5
+
+-- Instalaciones
+INSERT INTO Instalaciones (instalacion_id, nombre_instalacion, tipo_instalacion, disponibilidad, tarifa_instalacion, estado_instalacion)
+VALUES (seq_instalaciones.NEXTVAL,'Cancha 1','cancha',1,200.00,'disponible');
+
+INSERT INTO Instalaciones (instalacion_id, nombre_instalacion, tipo_instalacion, disponibilidad, tarifa_instalacion, estado_instalacion)
+VALUES (seq_instalaciones.NEXTVAL,'Piscina Principal','piscina',1,150.00,'disponible');
+
+INSERT INTO Instalaciones (instalacion_id, nombre_instalacion, tipo_instalacion, disponibilidad, tarifa_instalacion, estado_instalacion)
+VALUES (seq_instalaciones.NEXTVAL,'Salón A','salon',1,100.00,'disponible');
+
+INSERT INTO Instalaciones (instalacion_id, nombre_instalacion, tipo_instalacion, disponibilidad, tarifa_instalacion, estado_instalacion)
+VALUES (seq_instalaciones.NEXTVAL,'Área Recreativa 1','area_recreativa',1,50.00,'disponible');
+
+INSERT INTO Instalaciones (instalacion_id, nombre_instalacion, tipo_instalacion, disponibilidad, tarifa_instalacion, estado_instalacion)
+VALUES (seq_instalaciones.NEXTVAL,'Cancha 2','cancha',1,200.00,'mantenimiento');
+
+-- Reservas
+INSERT INTO Reservas (reserva_id, socio_id, instalacion_id, fecha_reserva, hora_inicio, hora_fin, estado_reserva, recurrente)
+VALUES (seq_reservas.NEXTVAL,1,1,SYSDATE,SYSTIMESTAMP,SYSTIMESTAMP+INTERVAL '1' HOUR,'confirmada',0);
+
+INSERT INTO Reservas (reserva_id, socio_id, instalacion_id, fecha_reserva, hora_inicio, hora_fin, estado_reserva, recurrente)
+VALUES (seq_reservas.NEXTVAL,2,2,SYSDATE,SYSTIMESTAMP,SYSTIMESTAMP+INTERVAL '2' HOUR,'pendiente',1);
+
+INSERT INTO Reservas (reserva_id, socio_id, instalacion_id, fecha_reserva, hora_inicio, hora_fin, estado_reserva, recurrente)
+VALUES (seq_reservas.NEXTVAL,3,3,SYSDATE,SYSTIMESTAMP,SYSTIMESTAMP+INTERVAL '1.5' HOUR,'confirmada',0);
+
+INSERT INTO Reservas (reserva_id, socio_id, instalacion_id, fecha_reserva, hora_inicio, hora_fin, estado_reserva, recurrente)
+VALUES (seq_reservas.NEXTVAL,4,4,SYSDATE,SYSTIMESTAMP,SYSTIMESTAMP+INTERVAL '1' HOUR,'cancelada',0);
+
+INSERT INTO Reservas (reserva_id, socio_id, instalacion_id, fecha_reserva, hora_inicio, hora_fin, estado_reserva, recurrente)
+VALUES (seq_reservas.NEXTVAL,5,1,SYSDATE,SYSTIMESTAMP,SYSTIMESTAMP+INTERVAL '2' HOUR,'pendiente',1);
+
+-- HistorialSocio
+INSERT INTO HistorialSocio (historial_id, socio_id, evento_id, reserva_id, pago_id, fecha_registro, detalle_historial)
+VALUES (seq_historial.NEXTVAL,1,1,1,1,SYSTIMESTAMP,'Asistió al torneo y reservó cancha');
+
+INSERT INTO HistorialSocio (historial_id, socio_id, evento_id, reserva_id, pago_id, fecha_registro, detalle_historial)
+VALUES (seq_historial.NEXTVAL,2,2,2,2,SYSTIMESTAMP,'Pagó inscripción y asistió a fiesta');
+
+INSERT INTO HistorialSocio (historial_id, socio_id, evento_id, reserva_id, pago_id, fecha_registro, detalle_historial)
+VALUES (seq_historial.NEXTVAL,3,3,3,3,SYSTIMESTAMP,'Participó en taller de yoga');
+
+INSERT INTO HistorialSocio (historial_id, socio_id, evento_id, reserva_id, pago_id, fecha_registro, detalle_historial)
+VALUES (seq_historial.NEXTVAL,4,4,4,4,SYSTIMESTAMP,'Corrió maratón 5K');
+
+INSERT INTO HistorialSocio (historial_id, socio_id, evento_id, reserva_id, pago_id, fecha_registro, detalle_historial)
+VALUES (seq_historial.NEXTVAL,5,5,5,5,SYSTIMESTAMP,'Jornada comunitaria y reserva área recreativa');
+
+-- Auditorias
+INSERT INTO Auditorias (auditoria_id, usuario_id, fecha_auditoria, accion_auditoria, entidad_afectada, detalle_auditoria)
+VALUES (seq_auditorias.NEXTVAL,1,SYSTIMESTAMP,'Creó socio','Socios','Se registró nuevo socio Juan Pérez');
+
+INSERT INTO Auditorias (auditoria_id, usuario_id, fecha_auditoria, accion_auditoria, entidad_afectada, detalle_auditoria)
+VALUES (seq_auditorias.NEXTVAL,5,SYSTIMESTAMP,'Modificó membresía','Membresias','Actualizó tarifa membresía');
+
+INSERT INTO Auditorias (auditoria_id, usuario_id, fecha_auditoria, accion_auditoria, entidad_afectada, detalle_auditoria)
+VALUES (seq_auditorias.NEXTVAL,1,SYSTIMESTAMP,'Eliminó reserva','Reservas','Canceló reserva de cancha');
+
+INSERT INTO Auditorias (auditoria_id, usuario_id, fecha_auditoria, accion_auditoria, entidad_afectada, detalle_auditoria)
+VALUES (seq_auditorias.NEXTVAL,5,SYSTIMESTAMP,'Emitió factura','Facturas','Factura emitida para pago 2');
+
+INSERT INTO Auditorias (auditoria_id, usuario_id, fecha_auditoria, accion_auditoria, entidad_afectada, detalle_auditoria)
+VALUES (seq_auditorias.NEXTVAL,1,SYSTIMESTAMP,'Creó evento','Eventos','Se creó torneo tenis');
+
+-- Respaldos
+INSERT INTO Respaldos (respaldo_id, fecha_respaldo, ubicacion_respaldo, tipo_respaldo, estado_respaldo, usuario_id)
+VALUES (seq_respaldos.NEXTVAL,SYSTIMESTAMP,'/backups/2025-10-01','completo','exitoso',5);
+
+INSERT INTO Respaldos (respaldo_id, fecha_respaldo, ubicacion_respaldo, tipo_respaldo, estado_respaldo, usuario_id)
+VALUES (seq_respaldos.NEXTVAL,SYSTIMESTAMP,'/backups/2025-10-02','incremental','exitoso',1);
+
+INSERT INTO Respaldos (respaldo_id, fecha_respaldo, ubicacion_respaldo, tipo_respaldo, estado_respaldo, usuario_id)
+VALUES (seq_respaldos.NEXTVAL,SYSTIMESTAMP,'/backups/2025-10-03','completo','fallido',5);
+
+INSERT INTO Respaldos (respaldo_id, fecha_respaldo, ubicacion_respaldo, tipo_respaldo, estado_respaldo, usuario_id)
+VALUES (seq_respaldos.NEXTVAL,SYSTIMESTAMP,'/backups/2025-10-04','incremental','exitoso',1);
+
+INSERT INTO Respaldos (respaldo_id, fecha_respaldo, ubicacion_respaldo, tipo_respaldo, estado_respaldo, usuario_id)
+VALUES (seq_respaldos.NEXTVAL,SYSTIMESTAMP,'/backups/2025-10-05','completo','exitoso',5);
+
+-- PlataformasExternas
+INSERT INTO PlataformasExternas (plataforma_id, nombre_plataforma, tipo_plataforma)
+VALUES (seq_plataformas.NEXTVAL,'Facebook','red_social');
+
+INSERT INTO PlataformasExternas (plataforma_id, nombre_plataforma, tipo_plataforma)
+VALUES (seq_plataformas.NEXTVAL,'QuickBooks','contable');
+
+INSERT INTO PlataformasExternas (plataforma_id, nombre_plataforma, tipo_plataforma)
+VALUES (seq_plataformas.NEXTVAL,'Google Calendar','calendario');
+
+INSERT INTO PlataformasExternas (plataforma_id, nombre_plataforma, tipo_plataforma)
+VALUES (seq_plataformas.NEXTVAL,'Instagram','red_social');
+
+INSERT INTO PlataformasExternas (plataforma_id, nombre_plataforma, tipo_plataforma)
+VALUES (seq_plataformas.NEXTVAL,'Xero','contable');
+
+-- Integraciones
+INSERT INTO Integraciones (integracion_id, usuario_id, plataforma_id, modulo_origen, fecha_integracion, estado_integracion, descripcion_integracion)
+VALUES (seq_integraciones.NEXTVAL,1,1,'Comunicacion',SYSTIMESTAMP,'activa','Integración con Facebook');
+
+INSERT INTO Integraciones (integracion_id, usuario_id, plataforma_id, modulo_origen, fecha_integracion, estado_integracion, descripcion_integracion)
+VALUES (seq_integraciones.NEXTVAL,5,2,'Pago',SYSTIMESTAMP,'activa','Integración con QuickBooks');
+
+INSERT INTO Integraciones (integracion_id, usuario_id, plataforma_id, modulo_origen, fecha_integracion, estado_integracion, descripcion_integracion)
+VALUES (seq_integraciones.NEXTVAL,1,3,'Evento',SYSTIMESTAMP,'activa','Integración con Google Calendar');
+
+INSERT INTO Integraciones (integracion_id, usuario_id, plataforma_id, modulo_origen, fecha_integracion, estado_integracion, descripcion_integracion)
+VALUES (seq_integraciones.NEXTVAL,5,4,'Comunicacion',SYSTIMESTAMP,'activa','Integración con Instagram');
+
+INSERT INTO Integraciones (integracion_id, usuario_id, plataforma_id, modulo_origen, fecha_integracion, estado_integracion, descripcion_integracion)
+VALUES (seq_integraciones.NEXTVAL,1,5,'Pago',SYSTIMESTAMP,'inactiva','Integración con Xero');
+
+-- Mantenimientos
+INSERT INTO Mantenimientos (mantenimiento_id, instalacion_id, tipo_mantenimiento, fecha_mantenimiento, descripcion_mantenimiento)
+VALUES (seq_mantenimientos.NEXTVAL,1,'preventivo',SYSDATE,'Revisión de iluminación y piso');
+
+INSERT INTO Mantenimientos (mantenimiento_id, instalacion_id, tipo_mantenimiento, fecha_mantenimiento, descripcion_mantenimiento)
+VALUES (seq_mantenimientos.NEXTVAL,2,'correctivo',SYSDATE,'Reparación de filtro piscina');
+
+INSERT INTO Mantenimientos (mantenimiento_id, instalacion_id, tipo_mantenimiento, fecha_mantenimiento, descripcion_mantenimiento)
+VALUES (seq_mantenimientos.NEXTVAL,3,'preventivo',SYSDATE,'Limpieza y mantenimiento del salón');
+
+INSERT INTO Mantenimientos (mantenimiento_id, instalacion_id, tipo_mantenimiento, fecha_mantenimiento, descripcion_mantenimiento)
+VALUES (seq_mantenimientos.NEXTVAL,4,'correctivo',SYSDATE,'Reparación de área recreativa');
+
+INSERT INTO Mantenimientos (mantenimiento_id, instalacion_id, tipo_mantenimiento, fecha_mantenimiento, descripcion_mantenimiento)
+VALUES (seq_mantenimientos.NEXTVAL,1,'preventivo',SYSDATE,'Chequeo general de la cancha');
+
+-- EvaluacionesInstalacion
+INSERT INTO EvaluacionesInstalacion (evaluacion_id, socio_id, instalacion_id, calificacion, comentarios_evaluacion)
+VALUES (seq_evaluaciones.NEXTVAL,1,1,5,'Excelente cancha');
+
+INSERT INTO EvaluacionesInstalacion (evaluacion_id, socio_id, instalacion_id, calificacion, comentarios_evaluacion)
+VALUES (seq_evaluaciones.NEXTVAL,2,2,4,'Piscina limpia y segura');
+
+INSERT INTO EvaluacionesInstalacion (evaluacion_id, socio_id, instalacion_id, calificacion, comentarios_evaluacion)
+VALUES (seq_evaluaciones.NEXTVAL,3,3,5,'Salón cómodo y amplio');
+
+INSERT INTO EvaluacionesInstalacion (evaluacion_id, socio_id, instalacion_id, calificacion, comentarios_evaluacion)
+VALUES (seq_evaluaciones.NEXTVAL,4,4,3,'Área recreativa necesita mejoras');
+
+INSERT INTO EvaluacionesInstalacion (evaluacion_id, socio_id, instalacion_id, calificacion, comentarios_evaluacion)
+VALUES (seq_evaluaciones.NEXTVAL,5,1,4,'Cancha bien mantenida');
+
