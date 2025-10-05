@@ -1,0 +1,89 @@
+-- ===============================================
+-- 👤 Persona 1 — Socios y CategoríasMembresía
+-- ===============================================
+
+-- Consulta 1: Socios con membresías de tarifa > 50
+SELECT nombre, apellido
+FROM Socios
+WHERE socio_id IN (
+    SELECT socio_id FROM Membresias WHERE tarifa > 50
+);
+
+-- Consulta 2: Categorías de membresía usadas en alguna membresía
+SELECT nombre_categoria
+FROM CategoriasMembresia
+WHERE categoria_id IN (
+    SELECT categoria_id FROM Membresias
+);
+
+-- ===============================================
+-- 👤 Persona 2 — UsuariosSistema y Membresías
+-- ===============================================
+
+-- Consulta 1: Usuarios que pertenecen a socios con membresía activa
+SELECT nombre_usuario, rol_usuario
+FROM UsuariosSistema
+WHERE socio_id IN (
+    SELECT socio_id FROM Membresias WHERE estado_membresia = 'activa'
+);
+
+-- Consulta 2: Usuarios asociados a algún socio
+SELECT nombre_usuario
+FROM UsuariosSistema
+WHERE socio_id IN (
+    SELECT socio_id FROM Socios
+);
+
+-- ===============================================
+-- 👤 Persona 3 — Pagos, Facturas, ProgramaFidelizacion
+-- ===============================================
+
+-- Consulta 1: Pagos con monto mayor a 100
+SELECT pago_id, monto_pago
+FROM Pagos
+WHERE monto_pago IN (
+    SELECT monto_pago FROM Pagos WHERE monto_pago > 100
+);
+
+-- Consulta 2: Socios con programa de fidelización
+SELECT socio_id, puntos_acumulados
+FROM ProgramaFidelizacion
+WHERE socio_id IN (
+    SELECT socio_id FROM Socios
+);
+
+-- ===============================================
+-- 👤 Persona 4 — Eventos, Inscripciones, EncuestasSatisfaccion
+-- ===============================================
+
+-- Consulta 1: Eventos con inscripciones pendientes
+SELECT nombre_evento
+FROM Eventos
+WHERE evento_id IN (
+    SELECT evento_id FROM Inscripciones WHERE estado_inscripcion = 'pendiente'
+);
+
+-- Consulta 2: Socios con encuestas de calificación 5
+SELECT socio_id
+FROM EncuestasSatisfaccion
+WHERE calificacion IN (
+    SELECT calificacion FROM EncuestasSatisfaccion WHERE calificacion = 5
+);
+
+-- ===============================================
+-- 👤 Persona 5 — Instalaciones, Reservas, Mantenimientos
+-- ===============================================
+
+-- Consulta 1: Instalaciones con reservas confirmadas
+SELECT nombre_instalacion
+FROM Instalaciones
+WHERE instalacion_id IN (
+    SELECT instalacion_id FROM Reservas WHERE estado_reserva = 'confirmada'
+);
+
+-- Consulta 2: Socios que evaluaron instalaciones con calificación > 4
+SELECT socio_id
+FROM EvaluacionesInstalacion
+WHERE calificacion IN (
+    SELECT calificacion FROM EvaluacionesInstalacion WHERE calificacion > 4
+);
