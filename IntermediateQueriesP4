@@ -1,0 +1,54 @@
+-- Persona 1
+SELECT nombre, apellido, fecha_nacimiento, email
+FROM Socios
+WHERE socio_id <= 3
+ORDER BY socio_id ASC;
+
+SELECT nombre_categoria, lista_beneficios, lista_privilegios
+FROM CategoriasMembresia
+WHERE categoria_id <= 2
+ORDER BY categoria_id ASC;
+
+-- Persona 2
+SELECT nombre_usuario, rol_usuario, estado_usuario, socio_id
+FROM UsuariosSistema
+WHERE estado_usuario = 'activo' AND socio_id IS NOT NULL
+ORDER BY nombre_usuario ASC;
+
+SELECT membresia_id, socio_id, categoria_id, fecha_inicio, tarifa
+FROM Membresias
+WHERE estado_membresia = 'activa' AND tarifa > 50
+ORDER BY fecha_inicio DESC;
+
+-- Persona 3
+SELECT pago_id, socio_id, fecha_pago, monto_pago, estado_pago
+FROM Pagos
+WHERE estado_pago = 'completado' AND monto_pago > 100
+ORDER BY monto_pago DESC;
+
+SELECT programa_id, socio_id, puntos_acumulados, recompensa_programa
+FROM ProgramaFidelizacion
+WHERE puntos_acumulados > 100
+ORDER BY puntos_acumulados DESC;
+
+-- Persona 4
+SELECT evento_id, nombre_evento, tipo_evento, costo_evento, fecha_evento
+FROM Eventos
+WHERE tipo_evento = 'deportivo' AND costo_evento > 20
+ORDER BY fecha_evento ASC;
+
+SELECT inscripcion_id, socio_id, evento_id, fecha_inscripcion, estado_inscripcion
+FROM Inscripciones
+WHERE estado_inscripcion = 'confirmado' AND evento_id = 1
+ORDER BY fecha_inscripcion DESC;
+
+-- Persona 5
+SELECT instalacion_id, nombre_instalacion, tipo_instalacion, tarifa_instalacion
+FROM Instalaciones
+WHERE disponibilidad = 1 AND tipo_instalacion IN ('piscina', 'cancha')
+ORDER BY tarifa_instalacion ASC;
+
+SELECT reserva_id, socio_id, instalacion_id, fecha_reserva, hora_inicio, hora_fin, estado_reserva
+FROM Reservas
+WHERE estado_reserva = 'confirmada' AND instalacion_id = 3
+ORDER BY hora_inicio ASC;
