@@ -185,19 +185,19 @@ VALUES (seq_mensajes.NEXTVAL,5,3,SYSTIMESTAMP,'Recordatorio de pago','directo');
 
 -- Anuncios
 INSERT INTO Anuncios (anuncio_id, socio_id, titulo_anuncio, contenido_anuncio, fecha_publicacion, tipo_anuncio)
-VALUES (seq_anuncios.NEXTVAL,1,'Nueva Clase de Yoga','Inscríbete en la nueva clase','SYSTIMESTAMP','evento');
+VALUES (seq_anuncios.NEXTVAL, 1, 'Nueva Clase de Yoga', 'Inscríbete en la nueva clase', SYSTIMESTAMP, 'evento');
 
 INSERT INTO Anuncios (anuncio_id, socio_id, titulo_anuncio, contenido_anuncio, fecha_publicacion, tipo_anuncio)
-VALUES (seq_anuncios.NEXTVAL,2,'Ganador Torneo Tenis','Felicitaciones al campeón','SYSTIMESTAMP','logro');
+VALUES (seq_anuncios.NEXTVAL, 2, 'Ganador Torneo Tenis', 'Felicitaciones al campeón', SYSTIMESTAMP, 'logro');
 
 INSERT INTO Anuncios (anuncio_id, socio_id, titulo_anuncio, contenido_anuncio, fecha_publicacion, tipo_anuncio)
-VALUES (seq_anuncios.NEXTVAL,3,'Fiesta Anual','No te pierdas la fiesta','SYSTIMESTAMP','noticia');
+VALUES (seq_anuncios.NEXTVAL, 3, 'Fiesta Anual', 'No te pierdas la fiesta', SYSTIMESTAMP, 'noticia');
 
 INSERT INTO Anuncios (anuncio_id, socio_id, titulo_anuncio, contenido_anuncio, fecha_publicacion, tipo_anuncio)
-VALUES (seq_anuncios.NEXTVAL,4,'Maratón 5K','Participa en la carrera','SYSTIMESTAMP','evento');
+VALUES (seq_anuncios.NEXTVAL, 4, 'Maratón 5K', 'Participa en la carrera', SYSTIMESTAMP, 'evento');
 
 INSERT INTO Anuncios (anuncio_id, socio_id, titulo_anuncio, contenido_anuncio, fecha_publicacion, tipo_anuncio)
-VALUES (seq_anuncios.NEXTVAL,5,'Jornada Comunitaria','Ayuda a tu comunidad','SYSTIMESTAMP','evento');
+VALUES (seq_anuncios.NEXTVAL, 5, 'Jornada Comunitaria', 'Ayuda a tu comunidad', SYSTIMESTAMP, 'evento');
 
 -- Foros
 INSERT INTO Foros (foro_id, tema_foro, fecha_creacion)
@@ -257,7 +257,7 @@ INSERT INTO Reservas (reserva_id, socio_id, instalacion_id, fecha_reserva, hora_
 VALUES (seq_reservas.NEXTVAL,2,2,SYSDATE,SYSTIMESTAMP,SYSTIMESTAMP+INTERVAL '2' HOUR,'pendiente',1);
 
 INSERT INTO Reservas (reserva_id, socio_id, instalacion_id, fecha_reserva, hora_inicio, hora_fin, estado_reserva, recurrente)
-VALUES (seq_reservas.NEXTVAL,3,3,SYSDATE,SYSTIMESTAMP,SYSTIMESTAMP+INTERVAL '1.5' HOUR,'confirmada',0);
+VALUES (seq_reservas.NEXTVAL,3,3,SYSDATE,SYSTIMESTAMP,SYSTIMESTAMP + INTERVAL '90' MINUTE,'confirmada',0);
 
 INSERT INTO Reservas (reserva_id, socio_id, instalacion_id, fecha_reserva, hora_inicio, hora_fin, estado_reserva, recurrente)
 VALUES (seq_reservas.NEXTVAL,4,4,SYSDATE,SYSTIMESTAMP,SYSTIMESTAMP+INTERVAL '1' HOUR,'cancelada',0);
@@ -376,4 +376,5 @@ VALUES (seq_evaluaciones.NEXTVAL,4,4,3,'Área recreativa necesita mejoras');
 
 INSERT INTO EvaluacionesInstalacion (evaluacion_id, socio_id, instalacion_id, calificacion, comentarios_evaluacion)
 VALUES (seq_evaluaciones.NEXTVAL,5,1,4,'Cancha bien mantenida');
+
 
