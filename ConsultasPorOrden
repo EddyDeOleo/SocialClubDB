@@ -1,0 +1,103 @@
+-- Persona 1
+
+-- Socios
+SELECT * FROM Socios ORDER BY socio_id;
+SELECT * FROM Socios ORDER BY apellido;
+
+-- CategoriasMembresia
+SELECT * FROM CategoriasMembresia ORDER BY categoria_id;
+SELECT * FROM CategoriasMembresia ORDER BY nombre_categoria;
+
+-- Persona 2
+
+-- UsuariosSistema
+SELECT * FROM UsuariosSistema ORDER BY usuario_id;
+SELECT * FROM UsuariosSistema ORDER BY nombre_usuario;
+
+-- Membresias
+SELECT * FROM Membresias ORDER BY membresia_id;
+SELECT * FROM Membresias ORDER BY fecha_inicio;
+
+-- Persona 3
+
+-- Pagos
+SELECT * FROM Pagos ORDER BY pago_id;
+SELECT * FROM Pagos ORDER BY fecha_pago;
+
+-- Facturas
+SELECT * FROM Facturas ORDER BY factura_id;
+SELECT * FROM Facturas ORDER BY fecha_factura;
+
+-- ProgramaFidelizacion
+SELECT * FROM ProgramaFidelizacion ORDER BY programa_id;
+SELECT * FROM ProgramaFidelizacion ORDER BY puntos_acumulados DESC;
+
+-- Persona 4
+
+-- Eventos
+SELECT * FROM Eventos ORDER BY evento_id;
+SELECT * FROM Eventos ORDER BY fecha_evento;
+
+-- Inscripciones
+SELECT * FROM Inscripciones ORDER BY inscripcion_id;
+SELECT * FROM Inscripciones ORDER BY estado_inscripcion;
+
+-- EncuestasSatisfaccion
+SELECT * FROM EncuestasSatisfaccion ORDER BY encuesta_id;
+SELECT * FROM EncuestasSatisfaccion ORDER BY calificacion DESC;
+
+-- Mensajes
+SELECT * FROM Mensajes ORDER BY mensaje_id;
+SELECT * FROM Mensajes ORDER BY fecha_envio;
+
+-- Anuncios
+SELECT * FROM Anuncios ORDER BY anuncio_id;
+SELECT * FROM Anuncios ORDER BY fecha_publicacion;
+
+-- Foros
+SELECT * FROM Foros ORDER BY foro_id;
+SELECT * FROM Foros ORDER BY fecha_creacion;
+
+-- ComentariosForo
+SELECT * FROM ComentariosForo ORDER BY comentario_id;
+SELECT * FROM ComentariosForo ORDER BY fecha_comentario;
+
+-- Persona 5
+
+-- Instalaciones
+SELECT * FROM Instalaciones ORDER BY instalacion_id;
+SELECT * FROM Instalaciones ORDER BY nombre_instalacion;
+
+-- Reservas
+SELECT * FROM Reservas ORDER BY reserva_id;
+SELECT * FROM Reservas ORDER BY fecha_reserva;
+
+-- HistorialSocio
+SELECT * FROM HistorialSocio ORDER BY historial_id;
+SELECT * FROM HistorialSocio ORDER BY fecha_registro;
+
+-- Auditorias
+SELECT * FROM Auditorias ORDER BY auditoria_id;
+SELECT * FROM Auditorias ORDER BY fecha_auditoria;
+
+-- Respaldos
+SELECT * FROM Respaldos ORDER BY respaldo_id;
+SELECT * FROM Respaldos ORDER BY fecha_respaldo;
+
+-- PlataformasExternas
+SELECT * FROM PlataformasExternas ORDER BY plataforma_id;
+SELECT * FROM PlataformasExternas ORDER BY nombre_plataforma;
+
+-- Integraciones
+SELECT * FROM Integraciones ORDER BY integracion_id;
+SELECT * FROM Integraciones ORDER BY fecha_integracion;
+
+-- Mantenimientos
+SELECT * FROM Mantenimientos ORDER BY mantenimiento_id;
+SELECT * FROM Mantenimientos ORDER BY fecha_mantenimiento;
+
+-- EvaluacionesInstalacion
+SELECT * FROM EvaluacionesInstalacion ORDER BY evaluacion_id;
+SELECT * FROM EvaluacionesInstalacion ORDER BY calificacion DESC;
+
+

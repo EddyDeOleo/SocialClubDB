@@ -1,0 +1,14 @@
+-- 1. Búsquedas rápidas por cédula en socios 
+CREATE INDEX idx_socios_cedula ON Socios(cedula);
+
+-- 2. Optimizar JOIN entre Membresias y Socios
+CREATE INDEX idx_membresias_socio ON Membresias(socio_id);
+
+-- 3. Optimizar consultas por estado y fechas en Pagos
+CREATE INDEX idx_pagos_estado_fecha ON Pagos(estado_pago, fecha_pago);
+
+-- 4. Optimizar Inscripciones por socio y evento
+CREATE INDEX idx_inscripciones_socio_evento ON Inscripciones(socio_id, evento_id);
+
+-- 5. Optimizar Reservas por socio y fecha
+CREATE INDEX idx_reservas_socio_fecha ON Reservas(socio_id, fecha_reserva);

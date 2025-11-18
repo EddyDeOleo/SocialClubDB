@@ -1,0 +1,29 @@
+-- Persona 1
+-- Público
+CREATE PUBLIC SYNONYM pub_socios FOR Socios;
+-- Privado
+CREATE SYNONYM priv_categorias FOR CategoriasMembresia;
+
+-- Persona 2
+-- Público
+CREATE PUBLIC SYNONYM pub_usuarios FOR UsuariosSistema;
+-- Privado
+CREATE SYNONYM priv_membresias FOR Membresias;
+
+-- Persona 3
+-- Público
+CREATE PUBLIC SYNONYM pub_pagos FOR Pagos;
+-- Privado
+CREATE SYNONYM priv_facturas FOR Facturas;
+
+-- Persona 4
+-- Público
+CREATE PUBLIC SYNONYM pub_eventos FOR Eventos;
+-- Privado
+CREATE SYNONYM priv_inscripciones FOR Inscripciones;
+
+-- Persona 5
+-- Público
+CREATE PUBLIC SYNONYM pub_instalaciones FOR Instalaciones;
+-- Privado
+CREATE SYNONYM priv_reservas FOR Reservas;

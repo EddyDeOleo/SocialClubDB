@@ -1,0 +1,142 @@
+--------------------------------------------------------------------------------
+-- 👤 PERSONA 1
+--------------------------------------------------------------------------------
+
+-- 1️⃣ NATURAL JOIN
+SELECT socio_id, nombre, apellido, fecha_inicio, fecha_fin, estado_membresia
+FROM Socios NATURAL JOIN Membresias;
+
+-- 2️⃣ USING
+SELECT socio_id, nombre, apellido, puntos_acumulados, recompensa_programa
+FROM Socios JOIN ProgramaFidelizacion USING (socio_id);
+
+-- 3️⃣ JOIN + ON
+SELECT s.nombre, s.apellido, p.monto_pago, p.estado_pago
+FROM Socios s JOIN Pagos p ON s.socio_id = p.socio_id;
+
+-- 4️⃣ SELF-JOIN
+SELECT s1.nombre AS socio1, s2.nombre AS socio2
+FROM Socios s1 JOIN Socios s2 ON s1.socio_id < s2.socio_id;
+
+-- 5️⃣ NON-EQUIJOIN
+SELECT p.pago_id, p.monto_pago, m.membresia_id, m.tarifa
+FROM Pagos p JOIN Membresias m ON p.monto_pago > m.tarifa;
+
+-- 6️⃣ OUTER JOIN
+SELECT s.nombre, s.apellido, p.monto_pago
+FROM Socios s LEFT JOIN Pagos p ON s.socio_id = p.socio_id;
+
+--------------------------------------------------------------------------------
+-- 👤 PERSONA 2
+--------------------------------------------------------------------------------
+
+-- 1️⃣ NATURAL JOIN
+SELECT usuario_id, nombre_usuario, rol_usuario, nombre, apellido
+FROM UsuariosSistema NATURAL JOIN Socios;
+
+-- 2️⃣ USING
+SELECT usuario_id, nombre_usuario, accion_auditoria
+FROM UsuariosSistema JOIN Auditorias USING (usuario_id);
+
+-- 3️⃣ JOIN + ON
+SELECT u.nombre_usuario, r.fecha_respaldo, r.tipo_respaldo
+FROM UsuariosSistema u JOIN Respaldos r ON u.usuario_id = r.usuario_id;
+
+-- 4️⃣ SELF-JOIN
+SELECT u1.nombre_usuario AS usuario1, u2.nombre_usuario AS usuario2
+FROM UsuariosSistema u1 JOIN UsuariosSistema u2 ON u1.usuario_id < u2.usuario_id;
+
+-- 5️⃣ NON-EQUIJOIN
+SELECT m.membresia_id, m.tarifa, p.pago_id, p.monto_pago
+FROM Membresias m JOIN Pagos p ON m.tarifa < p.monto_pago;
+
+-- 6️⃣ OUTER JOIN
+SELECT u.nombre_usuario, i.estado_integracion
+FROM UsuariosSistema u LEFT JOIN Integraciones i ON u.usuario_id = i.usuario_id;
+
+--------------------------------------------------------------------------------
+-- 👤 PERSONA 3
+--------------------------------------------------------------------------------
+
+-- 1️⃣ NATURAL JOIN
+SELECT pago_id, fecha_pago, monto_pago, factura_id, monto_factura
+FROM Pagos NATURAL JOIN Facturas;
+
+-- 2️⃣ USING
+SELECT socio_id, puntos_acumulados, recompensa_programa, nombre, apellido
+FROM ProgramaFidelizacion JOIN Socios USING (socio_id);
+
+-- 3️⃣ JOIN + ON
+SELECT p.pago_id, p.monto_pago, i.inscripcion_id, i.estado_inscripcion
+FROM Pagos p JOIN Inscripciones i ON p.pago_id = i.pago_id;
+
+-- 4️⃣ SELF-JOIN
+SELECT p1.pago_id AS pago1, p2.pago_id AS pago2, p1.monto_pago, p2.monto_pago
+FROM Pagos p1 JOIN Pagos p2 ON p1.pago_id < p2.pago_id;
+
+-- 5️⃣ NON-EQUIJOIN
+SELECT p.pago_id, p.monto_pago, m.membresia_id, m.tarifa
+FROM Pagos p JOIN Membresias m ON p.monto_pago >= m.tarifa;
+
+-- 6️⃣ OUTER JOIN
+SELECT pf.socio_id, pf.puntos_acumulados, p.monto_pago
+FROM ProgramaFidelizacion pf LEFT JOIN Pagos p ON pf.socio_id = p.socio_id;
+
+--------------------------------------------------------------------------------
+-- 👤 PERSONA 4
+--------------------------------------------------------------------------------
+
+-- 1️⃣ NATURAL JOIN
+SELECT evento_id, nombre_evento, socio_id, estado_inscripcion
+FROM Eventos NATURAL JOIN Inscripciones;
+
+-- 2️⃣ USING
+SELECT evento_id, calificacion, comentarios_encuesta, nombre_evento
+FROM EncuestasSatisfaccion JOIN Eventos USING (evento_id);
+
+-- 3️⃣ JOIN + ON
+SELECT m.mensaje_id, u.nombre_usuario AS remitente, u2.nombre_usuario AS destinatario
+FROM Mensajes m
+JOIN UsuariosSistema u ON m.remitente_id = u.usuario_id
+JOIN UsuariosSistema u2 ON m.destinatario_id = u2.usuario_id;
+
+-- 4️⃣ SELF-JOIN
+SELECT e1.nombre_evento AS evento1, e2.nombre_evento AS evento2
+FROM Eventos e1 JOIN Eventos e2 ON e1.evento_id < e2.evento_id;
+
+-- 5️⃣ NON-EQUIJOIN
+SELECT e.nombre_evento, e.costo_evento, p.pago_id, p.monto_pago
+FROM Eventos e JOIN Pagos p ON e.costo_evento <= p.monto_pago;
+
+-- 6️⃣ OUTER JOIN
+SELECT i.inscripcion_id, i.estado_inscripcion, p.monto_pago
+FROM Inscripciones i LEFT JOIN Pagos p ON i.pago_id = p.pago_id;
+
+--------------------------------------------------------------------------------
+-- 👤 PERSONA 5
+--------------------------------------------------------------------------------
+
+-- 1️⃣ NATURAL JOIN
+SELECT reserva_id, socio_id, nombre_instalacion, estado_reserva
+FROM Reservas NATURAL JOIN Instalaciones;
+
+-- 2️⃣ USING
+SELECT reserva_id, socio_id, fecha_registro, estado_reserva
+FROM HistorialSocio JOIN Reservas USING (reserva_id);
+
+-- 3️⃣ JOIN + ON
+SELECT m.mantenimiento_id, i.nombre_instalacion, m.tipo_mantenimiento
+FROM Mantenimientos m JOIN Instalaciones i ON m.instalacion_id = i.instalacion_id;
+
+-- 4️⃣ SELF-JOIN
+SELECT i1.nombre_instalacion AS instalacion1, i2.nombre_instalacion AS instalacion2
+FROM Instalaciones i1 JOIN Instalaciones i2 ON i1.instalacion_id < i2.instalacion_id;
+
+-- 5️⃣ NON-EQUIJOIN
+SELECT e.evaluacion_id, e.calificacion, i.nombre_instalacion
+FROM EvaluacionesInstalacion e JOIN Instalaciones i ON e.instalacion_id = i.instalacion_id
+WHERE e.calificacion > 3;
+
+-- 6️⃣ OUTER JOIN
+SELECT r.reserva_id, r.estado_reserva, h.detalle_historial
+FROM Reservas r LEFT JOIN HistorialSocio h ON r.reserva_id = h.reserva_id;

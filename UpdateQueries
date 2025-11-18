@@ -1,0 +1,96 @@
+-- ======================================
+-- PERSONA 1 – Socios, CategoriasMembresia
+-- ======================================
+
+-- Socios
+UPDATE Socios
+SET telefono = '809-555-1111'
+WHERE socio_id = 1;
+
+UPDATE Socios
+SET direccion = 'Calle Nueva 123, Santo Domingo'
+WHERE cedula = '001-0000001-1';
+
+-- CategoriasMembresia
+UPDATE CategoriasMembresia
+SET descripcion = 'Membresía premium con acceso a todas las instalaciones'
+WHERE categoria_id = 2;
+
+
+-- ======================================
+-- PERSONA 2 – UsuariosSistema, Membresias
+-- ======================================
+
+-- UsuariosSistema
+UPDATE UsuariosSistema
+SET rol_usuario = 'entrenador'
+WHERE usuario_id = 3;
+
+UPDATE UsuariosSistema
+SET estado_usuario = 'activo'
+WHERE nombre_usuario = 'maria2025';
+
+-- Membresias
+UPDATE Membresias
+SET fecha_fin = SYSDATE + 30
+WHERE membresia_id = 1;
+
+
+-- ======================================
+-- PERSONA 3 – Pagos, Facturas, ProgramaFidelizacion
+-- ======================================
+
+-- Pagos
+UPDATE Pagos
+SET estado_pago = 'completado'
+WHERE pago_id = 2;
+
+-- Facturas
+UPDATE Facturas
+SET estado_factura = 'cancelada'
+WHERE factura_id = 3;
+
+-- ProgramaFidelizacion
+UPDATE ProgramaFidelizacion
+SET puntos_acumulados = puntos_acumulados + 50
+WHERE socio_id = 1;
+
+
+-- ======================================
+-- PERSONA 4 – Eventos, Inscripciones, EncuestasSatisfaccion
+-- ======================================
+
+-- Eventos
+UPDATE Eventos
+SET costo_evento = 300.00
+WHERE evento_id = 2;
+
+-- Inscripciones
+UPDATE Inscripciones
+SET estado_inscripcion = 'confirmado'
+WHERE inscripcion_id = 4;
+
+-- EncuestasSatisfaccion
+UPDATE EncuestasSatisfaccion
+SET calificacion = 5
+WHERE encuesta_id = 3;
+
+
+-- ======================================
+-- PERSONA 5 – Instalaciones, Reservas, EvaluacionesInstalacion
+-- ======================================
+
+-- Instalaciones
+UPDATE Instalaciones
+SET estado_instalacion = 'mantenimiento'
+WHERE instalacion_id = 1;
+
+-- Reservas
+UPDATE Reservas
+SET estado_reserva = 'cancelada'
+WHERE reserva_id = 2;
+
+-- EvaluacionesInstalacion
+UPDATE EvaluacionesInstalacion
+SET calificacion = 4
+WHERE evaluacion_id = 1;

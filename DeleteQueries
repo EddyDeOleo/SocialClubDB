@@ -1,0 +1,93 @@
+-- ======================================
+-- PERSONA 1 – Socios, CategoriasMembresia
+-- ======================================
+
+-- Socios
+DELETE FROM Socios
+WHERE socio_id = 5;
+
+DELETE FROM Socios
+WHERE cedula = '001-0000002-2';
+
+-- CategoriasMembresia
+DELETE FROM CategoriasMembresia
+WHERE categoria_id = 3;
+
+
+-- ======================================
+-- PERSONA 2 – UsuariosSistema, Membresias
+-- ======================================
+
+-- UsuariosSistema
+DELETE FROM UsuariosSistema
+WHERE usuario_id = 4;
+
+DELETE FROM UsuariosSistema
+WHERE nombre_usuario = 'juan2025';
+
+-- Membresias
+DELETE FROM Membresias
+WHERE socio_id = 2;
+
+
+-- ======================================
+-- PERSONA 3 – Pagos, Facturas, ProgramaFidelizacion
+-- ======================================
+
+-- Pagos
+DELETE FROM Pagos
+WHERE estado_pago = 'pendiente' AND pago_id = 5;
+
+-- Facturas
+DELETE FROM Facturas
+WHERE estado_factura = 'cancelada';
+
+-- ProgramaFidelizacion
+DELETE FROM ProgramaFidelizacion
+WHERE socio_id = 3;
+
+
+-- ======================================
+-- PERSONA 4 – Eventos, Inscripciones, EncuestasSatisfaccion, Mensajes, Anuncios, ComentariosForo
+-- ======================================
+
+-- Eventos
+DELETE FROM Eventos
+WHERE evento_id = 4;
+
+-- Inscripciones
+DELETE FROM Inscripciones
+WHERE estado_inscripcion = 'cancelado';
+
+-- EncuestasSatisfaccion
+DELETE FROM EncuestasSatisfaccion
+WHERE encuesta_id = 2;
+
+-- Mensajes
+DELETE FROM Mensajes
+WHERE mensaje_id = 3;
+
+-- Anuncios
+DELETE FROM Anuncios
+WHERE anuncio_id = 1;
+
+-- ComentariosForo
+DELETE FROM ComentariosForo
+WHERE comentario_id = 2;
+
+
+-- ======================================
+-- PERSONA 5 – Instalaciones, Reservas, EvaluacionesInstalacion
+-- ======================================
+
+-- Instalaciones
+DELETE FROM Instalaciones
+WHERE instalacion_id = 5;
+
+-- Reservas
+DELETE FROM Reservas
+WHERE estado_reserva = 'cancelada';
+
+-- EvaluacionesInstalacion
+DELETE FROM EvaluacionesInstalacion
+WHERE evaluacion_id = 3;
